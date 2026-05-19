@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Echoes of History</title>
+  <title>Echoes of Stories</title>
   <style>
     :root {
-      --bg: #f8f4ec;
+      --bg: #f7f2ea;
       --surface: #fffdf9;
-      --ink: #1f1b16;
-      --accent: #8b5e34;
-      --accent-soft: #d9c3ab;
+      --ink: #23190f;
+      --accent: #7d4f28;
+      --accent-soft: #dcc7b1;
+      --muted: #5c4a38;
     }
 
     * {
@@ -30,12 +31,13 @@
       max-width: 100%;
       display: block;
       border-radius: 12px;
+      background: #eadccf;
     }
 
     header {
-      min-height: 70vh;
-      background: linear-gradient(rgba(20, 15, 10, 0.55), rgba(20, 15, 10, 0.55)),
-        url("https://upload.wikimedia.org/wikipedia/commons/0/0f/Parthenon_from_west.jpg") center/cover;
+      min-height: 60vh;
+      background: linear-gradient(rgba(20, 15, 10, 0.52), rgba(20, 15, 10, 0.52)),
+        url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Paris_Night.jpg/1280px-Paris_Night.jpg") center/cover;
       color: #fff;
       display: grid;
       place-items: center;
@@ -48,7 +50,7 @@
     }
 
     .hero-content h1 {
-      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-size: clamp(2rem, 5vw, 3.6rem);
       margin-bottom: 0.8rem;
       letter-spacing: 1px;
     }
@@ -67,6 +69,16 @@
       padding: 0.8rem 1rem;
     }
 
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      width: min(1100px, 95%);
+      margin: 0 auto;
+    }
+
     .nav-links {
       display: flex;
       justify-content: center;
@@ -79,6 +91,29 @@
       text-decoration: none;
       color: var(--accent);
       font-weight: bold;
+    }
+
+    .nav-links a:hover,
+    .login-options a:hover {
+      text-decoration: underline;
+    }
+
+    .login-options {
+      display: flex;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .login-options a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-primary {
+      border: 1px solid var(--accent);
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
     }
 
     main {
@@ -98,6 +133,10 @@
     h2 {
       margin-bottom: 1rem;
       color: var(--accent);
+    }
+
+    .lede {
+      color: var(--muted);
     }
 
     .grid-2 {
@@ -120,37 +159,85 @@
       padding: 1rem;
     }
 
+    .card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      margin-bottom: 0.55rem;
+    }
+
     .card h3 {
       margin: 0.7rem 0 0.35rem;
       color: #6e4727;
     }
 
-    .timeline {
+    .chip-list {
       list-style: none;
       display: grid;
       gap: 0.85rem;
     }
 
-    .timeline li {
+    .chip-list li {
       border-left: 4px solid var(--accent-soft);
       padding-left: 0.8rem;
     }
 
-    .timeline strong {
+    .chip-list strong {
       color: #6e4727;
     }
 
-    .figure img {
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      margin-bottom: 0.6rem;
+    .login-panel {
+      display: grid;
+      gap: 1rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .login-panel form {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .login-panel label {
+      font-weight: 600;
+      color: #6e4727;
+    }
+
+    .login-panel input {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border-radius: 10px;
+      border: 1px solid #d7c3ad;
+      font: inherit;
+    }
+
+    .login-status {
+      color: #5b4028;
+      font-size: 0.95rem;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 1px solid #c9ab8c;
+      background: #fff3e4;
+      color: #603f23;
+      border-radius: 10px;
+      padding: 0.55rem 0.8rem;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
     }
 
     .quote {
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #5d4129;
-      padding: 2rem;
+      padding: 1.2rem;
       background: #f4e7d8;
     }
 
@@ -164,100 +251,120 @@
 <body>
   <header>
     <div class="hero-content">
-      <h1>Echoes of History</h1>
-      <p>Travel through ancient civilizations, world-changing moments, and legendary historical figures.</p>
+      <h1>Echoes of Stories</h1>
+      <p>A story-first wiki for people, places, and objects — short reads, real moments, zero textbook vibe.</p>
     </div>
   </header>
 
   <nav>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#civilizations">Civilizations</a></li>
-      <li><a href="#figures">Figures</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-    </ul>
+    <div class="nav-row">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#random-picks">Random Picks</a></li>
+      </ul>
+      <div class="login-options">
+        <a href="#login">Sign in</a>
+        <a href="#login" class="login-primary">Create account</a>
+      </div>
+    </div>
   </nav>
 
   <main>
     <section id="about" class="grid-2">
       <div>
-        <h2>Why History Matters</h2>
-        <p>History helps us understand how people lived, built societies, solved problems, and changed the world. Every era leaves lessons that shape our future.</p>
+        <h2>What this site is</h2>
+        <p class="lede">Think of this as a fun, story-style wiki. You open the page and get quick stories about random people, places, and objects — not a thick encyclopedia chapter.</p>
       </div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Pyramids_of_the_Giza_Necropolis.jpg" alt="The Great Pyramids of Giza">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Salar_de_Uyuni%2C_Bolivia%2C_2016-02-03%2C_DD_48-50_HDR.JPG/640px-Salar_de_Uyuni%2C_Bolivia%2C_2016-02-03%2C_DD_48-50_HDR.JPG" alt="Salt flats in Bolivia" data-original-alt="Salt flats in Bolivia" onerror="handleImgError(this)">
     </section>
 
-    <section id="timeline">
-      <h2>Basic World History Timeline</h2>
-      <ul class="timeline">
-        <li><strong>c. 3000 BCE:</strong> Early civilizations emerge in Mesopotamia and Egypt.</li>
-        <li><strong>c. 500 BCE:</strong> Classical age expands in Greece, India, and China.</li>
-        <li><strong>476 CE:</strong> Western Roman Empire falls, beginning the Medieval period in Europe.</li>
-        <li><strong>1492:</strong> Age of Exploration accelerates global contact.</li>
-        <li><strong>1760–1840:</strong> Industrial Revolution transforms production and daily life.</li>
-        <li><strong>1914–1945:</strong> Two world wars reshape modern international order.</li>
+    <section id="stories">
+      <h2>Stories on the front page</h2>
+      <div class="card-grid">
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Triomphe_de_la_R%C3%A9publique%2C_Place_de_la_Nation%2C_Paris_18_August_2010.jpg/640px-Triomphe_de_la_R%C3%A9publique%2C_Place_de_la_Nation%2C_Paris_18_August_2010.jpg" alt="Place de la Nation in Paris" data-original-alt="Place de la Nation in Paris" onerror="handleImgError(this)">
+          <h3>Place Story: A square with many lives</h3>
+          <p>One corner was for speeches, another for protests, and another for date nights. The same place carried different meanings across generations.</p>
+        </article>
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Mahatma-Gandhi%2C_studio%2C_1931.jpg/512px-Mahatma-Gandhi%2C_studio%2C_1931.jpg" alt="Portrait of Mahatma Gandhi" data-original-alt="Portrait of Mahatma Gandhi" onerror="handleImgError(this)">
+          <h3>People Story: A quiet idea that moved millions</h3>
+          <p>A lawyer in simple clothes turned refusal into power. His choices spread from local marches to global civil rights movements.</p>
+        </article>
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Typewriter_%28writing_machine%29.jpg/640px-Typewriter_%28writing_machine%29.jpg" alt="Vintage typewriter" data-original-alt="Vintage typewriter" onerror="handleImgError(this)">
+          <h3>Object Story: The typewriter that changed voices</h3>
+          <p>Letters got faster, writers got louder, and offices changed forever. One machine reshaped who could publish and be heard.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="random-picks">
+      <h2>Random picks today</h2>
+      <ul class="chip-list">
+        <li><strong>Person:</strong> A lighthouse keeper who logged storms for 34 years and accidentally created climate records.</li>
+        <li><strong>Place:</strong> A market alley in Cairo where maps, tea, and political rumors traveled together.</li>
+        <li><strong>Object:</strong> A pocket compass that crossed three wars and still points north on a kitchen shelf.</li>
       </ul>
     </section>
 
-    <section id="civilizations">
-      <h2>Major Civilizations</h2>
-      <div class="card-grid">
-        <article class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Ishtar_Gate_at_Berlin_Museum.jpg" alt="Ishtar Gate of Babylon">
-          <h3>Mesopotamia</h3>
-          <p>Often called the cradle of civilization, known for cuneiform writing, city-states, and law codes.</p>
-        </article>
-        <article class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Great_Wall_of_China_June_2007.jpg" alt="Great Wall of China">
-          <h3>Ancient China</h3>
-          <p>Innovations in paper, silk, philosophy, and governance deeply influenced East Asian history.</p>
-        </article>
-        <article class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg" alt="Roman Colosseum">
-          <h3>Rome</h3>
-          <p>Rome shaped law, engineering, architecture, and administrative systems still studied today.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="figures">
-      <h2>Historical Figures</h2>
-      <div class="card-grid">
-        <article class="card figure">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Cleopatra_VII_Altes_Museum_Berlin.jpg" alt="Bust of Cleopatra VII">
-          <h3>Cleopatra VII</h3>
-          <p>The final active ruler of Ptolemaic Egypt and one of the most recognized leaders of the ancient world.</p>
-        </article>
-        <article class="card figure">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Albert_Einstein_Head_cleaned.jpg" alt="Portrait of Albert Einstein">
-          <h3>Albert Einstein</h3>
-          <p>A physicist whose theory of relativity transformed scientific understanding in the 20th century.</p>
-        </article>
-        <article class="card figure">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg" alt="Portrait of Mahatma Gandhi">
-          <h3>Mahatma Gandhi</h3>
-          <p>A key leader of India’s independence movement, known for nonviolent resistance and civil action.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <h2>Historical Landmarks Gallery</h2>
-      <div class="card-grid">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Machu_Picchu%2C_2023_%28012%29.jpg" alt="Machu Picchu in Peru">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Stonehenge2007_07_30.jpg" alt="Stonehenge in England">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg" alt="Taj Mahal in India">
+    <section id="login">
+      <h2>Login options</h2>
+      <div class="login-panel">
+        <p class="lede">Save favorites, build story lists, and get a fresh random mix every visit.</p>
+        <form onsubmit="submitLogin(event)">
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" minlength="8" required>
+          </div>
+          <div class="btn-row">
+            <button type="submit">Sign in</button>
+            <button type="button" onclick="createAccount()">Create account</button>
+          </div>
+        </form>
+        <div class="btn-row">
+          <button type="button" onclick="selectLogin('Google')">Continue with Google</button>
+          <button type="button" onclick="selectLogin('GitHub')">Continue with GitHub</button>
+          <button type="button" onclick="selectLogin('Apple')">Continue with Apple</button>
+        </div>
+        <p id="login-status" class="login-status" aria-live="polite">Choose an option to continue.</p>
       </div>
     </section>
 
     <section class="quote">
-      <p>“The more you know about the past, the better prepared you are for the future.” — Theodore Roosevelt</p>
+      <p>Short stories. Real places. Unexpected people. Everyday objects with wild pasts.</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 Echoes of History — A simple historical showcase website.</p>
+    <p>&copy; 2026 Echoes of Stories — a fun wiki-style story site.</p>
   </footer>
+  <script>
+    function handleImgError(img) {
+      img.onerror = null;
+      img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Story image unavailable' width='640' height='480'%3E%3Crect width='100%25' height='100%25' fill='%23e8d8c7'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-size='26' fill='%23634930'%3EStory image unavailable%3C/text%3E%3C/svg%3E";
+      const originalAlt = img.getAttribute("data-original-alt") || "story image";
+      img.alt = `Fallback image for: ${originalAlt}`;
+    }
+
+    function submitLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      document.getElementById("login-status").textContent = `Signed in as ${email} (demo mode).`;
+    }
+
+    function createAccount() {
+      document.getElementById("login-status").textContent = "Create account selected (demo mode).";
+    }
+
+    function selectLogin(provider) {
+      document.getElementById("login-status").textContent = `Continue with ${provider} selected (demo mode).`;
+    }
+  </script>
 </body>
 </html>
