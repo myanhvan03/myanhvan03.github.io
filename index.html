@@ -1,10 +1,263 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echoes of History</title>
+  <style>
+    :root {
+      --bg: #f8f4ec;
+      --surface: #fffdf9;
+      --ink: #1f1b16;
+      --accent: #8b5e34;
+      --accent-soft: #d9c3ab;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
+
+    header {
+      min-height: 70vh;
+      background: linear-gradient(rgba(20, 15, 10, 0.55), rgba(20, 15, 10, 0.55)),
+        url("https://upload.wikimedia.org/wikipedia/commons/0/0f/Parthenon_from_west.jpg") center/cover;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      margin-bottom: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    .hero-content p {
+      font-size: clamp(1rem, 2.3vw, 1.3rem);
+      color: #f8efe6;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--surface);
+      border-bottom: 1px solid var(--accent-soft);
+      padding: 0.8rem 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    main {
+      width: min(1100px, 92%);
+      margin: 2rem auto 3rem;
+      display: grid;
+      gap: 2rem;
+    }
+
+    section {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 1.4rem;
+      box-shadow: 0 8px 24px rgba(48, 37, 23, 0.08);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: #fff9f2;
+      border: 1px solid #ecdcc9;
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .card h3 {
+      margin: 0.7rem 0 0.35rem;
+      color: #6e4727;
+    }
+
+    .timeline {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .timeline li {
+      border-left: 4px solid var(--accent-soft);
+      padding-left: 0.8rem;
+    }
+
+    .timeline strong {
+      color: #6e4727;
+    }
+
+    .figure img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      margin-bottom: 0.6rem;
+    }
+
+    .quote {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #5d4129;
+      padding: 2rem;
+      background: #f4e7d8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2rem;
+      color: #6a533c;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello world 😭</h1>
-  <p>This is my first site.</p>
+  <header>
+    <div class="hero-content">
+      <h1>Echoes of History</h1>
+      <p>Travel through ancient civilizations, world-changing moments, and legendary historical figures.</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#civilizations">Civilizations</a></li>
+      <li><a href="#figures">Figures</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="about" class="grid-2">
+      <div>
+        <h2>Why History Matters</h2>
+        <p>History helps us understand how people lived, built societies, solved problems, and changed the world. Every era leaves lessons that shape our future.</p>
+      </div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Pyramids_of_the_Giza_Necropolis.jpg" alt="The Great Pyramids of Giza">
+    </section>
+
+    <section id="timeline">
+      <h2>Basic World History Timeline</h2>
+      <ul class="timeline">
+        <li><strong>c. 3000 BCE:</strong> Early civilizations emerge in Mesopotamia and Egypt.</li>
+        <li><strong>c. 500 BCE:</strong> Classical age expands in Greece, India, and China.</li>
+        <li><strong>476 CE:</strong> Western Roman Empire falls, beginning the Medieval period in Europe.</li>
+        <li><strong>1492:</strong> Age of Exploration accelerates global contact.</li>
+        <li><strong>1760–1840:</strong> Industrial Revolution transforms production and daily life.</li>
+        <li><strong>1914–1945:</strong> Two world wars reshape modern international order.</li>
+      </ul>
+    </section>
+
+    <section id="civilizations">
+      <h2>Major Civilizations</h2>
+      <div class="card-grid">
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Ishtar_Gate_at_Berlin_Museum.jpg" alt="Ishtar Gate of Babylon">
+          <h3>Mesopotamia</h3>
+          <p>Often called the cradle of civilization, known for cuneiform writing, city-states, and law codes.</p>
+        </article>
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Great_Wall_of_China_June_2007.jpg" alt="Great Wall of China">
+          <h3>Ancient China</h3>
+          <p>Innovations in paper, silk, philosophy, and governance deeply influenced East Asian history.</p>
+        </article>
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg" alt="Roman Colosseum">
+          <h3>Rome</h3>
+          <p>Rome shaped law, engineering, architecture, and administrative systems still studied today.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="figures">
+      <h2>Historical Figures</h2>
+      <div class="card-grid">
+        <article class="card figure">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Cleopatra_VII_Altes_Museum_Berlin.jpg" alt="Bust of Cleopatra VII">
+          <h3>Cleopatra VII</h3>
+          <p>The final active ruler of Ptolemaic Egypt and one of the most recognized leaders of the ancient world.</p>
+        </article>
+        <article class="card figure">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Albert_Einstein_Head.jpg" alt="Portrait of Albert Einstein">
+          <h3>Albert Einstein</h3>
+          <p>A physicist whose theory of relativity transformed scientific understanding in the 20th century.</p>
+        </article>
+        <article class="card figure">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Mahatma-Gandhi%2C_studio%2C_1931.jpg" alt="Portrait of Mahatma Gandhi">
+          <h3>Mahatma Gandhi</h3>
+          <p>A key leader of India’s independence movement, known for nonviolent resistance and civil action.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>Historical Landmarks Gallery</h2>
+      <div class="card-grid">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Machu_Picchu%2C_Peru.jpg" alt="Machu Picchu in Peru">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Stonehenge2007_07_30.jpg" alt="Stonehenge in England">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Taj_Mahal_in_March_2004.jpg" alt="Taj Mahal in India">
+      </div>
+    </section>
+
+    <section class="quote">
+      <p>“The more you know about the past, the better prepared you are for the future.” — Theodore Roosevelt</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Echoes of History — A simple historical showcase website.</p>
+  </footer>
 </body>
 </html>
