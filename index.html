@@ -211,6 +211,11 @@
       font: inherit;
     }
 
+    .login-status {
+      color: #5b4028;
+      font-size: 0.95rem;
+    }
+
     .btn-row {
       display: flex;
       gap: 0.55rem;
@@ -308,25 +313,26 @@
       <h2>Login options</h2>
       <div class="login-panel">
         <p class="lede">Save favorites, build story lists, and get a fresh random mix every visit.</p>
-        <form action="#" method="post">
+        <form onsubmit="submitLogin(event)">
           <div>
             <label for="email">Email</label>
-            <input id="email" type="email" placeholder="you@example.com">
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
           </div>
           <div>
             <label for="password">Password</label>
-            <input id="password" type="password" placeholder="••••••••">
+            <input id="password" name="password" type="password" placeholder="••••••••" required>
           </div>
           <div class="btn-row">
             <button type="submit">Sign in</button>
-            <button type="button">Create account</button>
+            <button type="button" onclick="createAccount()">Create account</button>
           </div>
         </form>
         <div class="btn-row">
-          <button type="button">Continue with Google</button>
-          <button type="button">Continue with GitHub</button>
-          <button type="button">Continue with Apple</button>
+          <button type="button" onclick="selectLogin('Google')">Continue with Google</button>
+          <button type="button" onclick="selectLogin('GitHub')">Continue with GitHub</button>
+          <button type="button" onclick="selectLogin('Apple')">Continue with Apple</button>
         </div>
+        <p id="login-status" class="login-status" aria-live="polite">Choose an option to continue.</p>
       </div>
     </section>
 
@@ -344,6 +350,20 @@
       img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='100%25' height='100%25' fill='%23e8d8c7'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' font-family='Georgia' font-size='26' fill='%23634930'%3EStory image unavailable%3C/text%3E%3C/svg%3E";
       const originalAlt = img.getAttribute("data-original-alt") || "story image";
       img.alt = `Fallback image for: ${originalAlt}`;
+    }
+
+    function submitLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value || "guest";
+      document.getElementById("login-status").textContent = `Signed in as ${email} (demo mode).`;
+    }
+
+    function createAccount() {
+      document.getElementById("login-status").textContent = "Create account selected (demo mode).";
+    }
+
+    function selectLogin(provider) {
+      document.getElementById("login-status").textContent = `Continue with ${provider} selected (demo mode).`;
     }
   </script>
 </body>
