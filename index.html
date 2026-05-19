@@ -257,7 +257,6 @@
         <li><a href="#about">About</a></li>
         <li><a href="#stories">Stories</a></li>
         <li><a href="#random-picks">Random Picks</a></li>
-        <li><a href="#login">Login</a></li>
       </ul>
       <div class="login-options">
         <a href="#login">Sign in</a>
@@ -272,24 +271,24 @@
         <h2>What this site is</h2>
         <p class="lede">Think of this as a fun, story-style wiki. You open the page and get quick stories about random people, places, and objects — not a thick encyclopedia chapter.</p>
       </div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Salar_de_Uyuni%2C_Bolivia%2C_2016-02-03%2C_DD_48-50_HDR.JPG/640px-Salar_de_Uyuni%2C_Bolivia%2C_2016-02-03%2C_DD_48-50_HDR.JPG" alt="Salt flats in Bolivia" onerror="handleImgError(this)">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Salar_de_Uyuni%2C_Bolivia%2C_2016-02-03%2C_DD_48-50_HDR.JPG/640px-Salar_de_Uyuni%2C_Bolivia%2C_2016-02-03%2C_DD_48-50_HDR.JPG" alt="Salt flats in Bolivia" data-original-alt="Salt flats in Bolivia" onerror="handleImgError(this)">
     </section>
 
     <section id="stories">
       <h2>Stories on the front page</h2>
       <div class="card-grid">
         <article class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Triomphe_de_la_R%C3%A9publique%2C_Place_de_la_Nation%2C_Paris_18_August_2010.jpg/640px-Triomphe_de_la_R%C3%A9publique%2C_Place_de_la_Nation%2C_Paris_18_August_2010.jpg" alt="Place de la Nation in Paris" onerror="handleImgError(this)">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Triomphe_de_la_R%C3%A9publique%2C_Place_de_la_Nation%2C_Paris_18_August_2010.jpg/640px-Triomphe_de_la_R%C3%A9publique%2C_Place_de_la_Nation%2C_Paris_18_August_2010.jpg" alt="Place de la Nation in Paris" data-original-alt="Place de la Nation in Paris" onerror="handleImgError(this)">
           <h3>Place Story: A square with many lives</h3>
           <p>One corner was for speeches, another for protests, and another for date nights. The same place carried different meanings across generations.</p>
         </article>
         <article class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Mahatma-Gandhi%2C_studio%2C_1931.jpg/512px-Mahatma-Gandhi%2C_studio%2C_1931.jpg" alt="Portrait of Mahatma Gandhi" onerror="handleImgError(this)">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Mahatma-Gandhi%2C_studio%2C_1931.jpg/512px-Mahatma-Gandhi%2C_studio%2C_1931.jpg" alt="Portrait of Mahatma Gandhi" data-original-alt="Portrait of Mahatma Gandhi" onerror="handleImgError(this)">
           <h3>People Story: A quiet idea that moved millions</h3>
           <p>A lawyer in simple clothes turned refusal into power. His choices spread from local marches to global civil rights movements.</p>
         </article>
         <article class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Typewriter_%28writing_machine%29.jpg/640px-Typewriter_%28writing_machine%29.jpg" alt="Vintage typewriter" onerror="handleImgError(this)">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Typewriter_%28writing_machine%29.jpg/640px-Typewriter_%28writing_machine%29.jpg" alt="Vintage typewriter" data-original-alt="Vintage typewriter" onerror="handleImgError(this)">
           <h3>Object Story: The typewriter that changed voices</h3>
           <p>Letters got faster, writers got louder, and offices changed forever. One machine reshaped who could publish and be heard.</p>
         </article>
@@ -309,7 +308,7 @@
       <h2>Login options</h2>
       <div class="login-panel">
         <p class="lede">Save favorites, build story lists, and get a fresh random mix every visit.</p>
-        <form>
+        <form action="#" method="post">
           <div>
             <label for="email">Email</label>
             <input id="email" type="email" placeholder="you@example.com">
@@ -319,7 +318,7 @@
             <input id="password" type="password" placeholder="••••••••">
           </div>
           <div class="btn-row">
-            <button type="button">Sign in</button>
+            <button type="submit">Sign in</button>
             <button type="button">Create account</button>
           </div>
         </form>
@@ -343,7 +342,8 @@
     function handleImgError(img) {
       img.onerror = null;
       img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='100%25' height='100%25' fill='%23e8d8c7'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' font-family='Georgia' font-size='26' fill='%23634930'%3EStory image unavailable%3C/text%3E%3C/svg%3E";
-      img.alt = "Fallback story image";
+      const originalAlt = img.getAttribute("data-original-alt") || "story image";
+      img.alt = `Fallback image for: ${originalAlt}`;
     }
   </script>
 </body>
